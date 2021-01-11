@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDateStart, start, stop } from '../../redux/recorder';
+import { selectDateStart, start, stop } from '../../redux/actions/recorderActions';
 import { addZero } from '../../lib/utils';
 import './Recorder.css';
 import cx from 'classnames';
-import { createUserEvent } from '../../redux/user-events';
+import { createUserEvent } from '../../redux/thunks';
 
 
 

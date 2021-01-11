@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { UserEvent } from '../../interfaces';
 import {
   deleteUserEvent,
-  updateUserEvent,
-  UserEvent,
-} from '../../redux/user-events';
+  updateUserEvent
+} from '../../redux/thunks';
 import './Calendar.css';
 
 interface Props {

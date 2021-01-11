@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { addZero } from '../../lib/utils';
 import { RootState } from '../../redux/store';
+import { UserEvent } from '../../interfaces';
+import { selectUserEventsArray } from '../../redux/actions/eventsActions';
 import {
-  selectUserEventsArray,
-  loadUserEvents,
-  UserEvent,
-  deleteUserEvent,
-} from '../../redux/user-events';
+  loadUserEvents
+} from '../../redux/thunks';
 import EventItem from './EventItem';
 import './Calendar.css';
 
@@ -16,8 +15,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = {
-  loadUserEvents,
-  deleteUserEvent,
+  loadUserEvents
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -58,11 +56,11 @@ const groupEventsByDay = (events: UserEvent[]) => {
 
 const Calendar: React.FC<Props> = ({
   events,
-  loadUserEvents,
-  deleteUserEvent,
+  loadUserEvents
 }) => {
   useEffect(() => {
     loadUserEvents();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let groupedEvents: ReturnType<typeof groupEventsByDay> | undefined;
